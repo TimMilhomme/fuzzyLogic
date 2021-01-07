@@ -1,0 +1,38 @@
+[System]
+Name='1stMethodSeguno'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=3
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='deltaT'
+Range=[0 10]
+NumMFs=2
+MF1='smallApp':'trimf',[0 0 10]
+MF2='largeApp':'trimf',[0 10 10]
+
+[Input2]
+Name='w'
+Range=[1000 2000]
+NumMFs=2
+MF1='smallflowrate':'trimf',[0 1000 2000]
+MF2='largeflowrate':'trimf',[1000 2000 2000]
+
+[Output1]
+Name='HeatExchanger'
+Range=[0 20000]
+NumMFs=2
+MF1='smallHE':'linear',[0 0 20000]
+MF2='largeHE':'linear',[0 20000 20000]
+
+[Rules]
+1 2, 2 (1) : 1
+2 1, 1 (1) : 2
+1 1, 2 (1) : 1

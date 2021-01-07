@@ -1,0 +1,38 @@
+[System]
+Name='1stMethodMamdani'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='DeltaT'
+Range=[0 10]
+NumMFs=2
+MF1='smallApp':'trimf',[0 0 10]
+MF2='largeApp':'trimf',[0 10 10]
+
+[Input2]
+Name='w'
+Range=[1000 2000]
+NumMFs=2
+MF1='smallflowrate':'trimf',[0 1000 2000]
+MF2='largeflowrate':'trimf',[1000 2000 2000]
+
+[Output1]
+Name='HeatExchanger'
+Range=[0 20000]
+NumMFs=2
+MF1='smallHE':'trimf',[0 0 20000]
+MF2='largeHE':'trimf',[0 20000 20000]
+
+[Rules]
+1 2, 2 (1) : 1
+2 1, 1 (1) : 2
+1 1, 2 (1) : 1
